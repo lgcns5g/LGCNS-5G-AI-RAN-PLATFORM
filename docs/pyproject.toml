@@ -1,0 +1,125 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "framework-docs"
+dynamic = ["version"]
+description = "Aerial Framework Documentation"
+license = { text = "Apache 2.0" }
+authors = [
+    { name = "NVIDIA Aerial" },
+]
+requires-python = ">=3.12"
+dependencies = [
+    "sphinx>=7.0.0",
+    "nvidia-sphinx-theme>=0.0.5",
+    "breathe>=4.35.0",
+    "sphinx-design>=0.5.0",
+    "myst-parser>=2.0.0",
+    "sphinxcontrib-mermaid>=0.9.2",
+    "doc8>=1.0.0",
+    "nbsphinx>=0.9.0",
+    "jupytext>=1.15.0",
+    "jupyter>=1.0.0",
+    "jupyterlab>=4.4.0",
+    "jupyter-server>=2.7.2",
+    "notebook>=7.4.0",
+    "ipykernel>=6.0.0",
+    "python-dotenv>=1.0.0",
+    "ran",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "mypy>=1.0.0",
+    "black>=23.0.0",
+    "isort>=5.0.0",
+    "ruff>=0.1.0",
+    "nbclient>=0.8.0",
+    "filelock>=3.12.0",
+]
+
+# RAN dependencies with MLIR-TRT support (when ENABLE_MLIR_TRT=ON)
+ran_mlir_trt = [
+    "ran[dev,phy_jax,mlir_trt_wheels,datasets]",
+]
+
+# RAN dependencies without MLIR-TRT (when ENABLE_MLIR_TRT=OFF)
+ran_base = [
+    "ran[dev,datasets]",
+]
+
+# Hatchling version configuration - read from root VERSION file
+[tool.hatch.version]
+path = "../VERSION"
+pattern = "(?P<version>.+)"
+
+# Hatchling configuration for src layout
+[tool.hatch.build.sources]
+"tutorials/src" = "tutorials_src"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/framework_docs"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/",
+    "tutorials/",
+    "pyproject.toml",
+]
+
+[tool.black]
+line-length = 100
+target-version = ['py310']
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.doc8]
+max-line-length = 100
+ignore-path = ["out/**"]  # Ignore Sphinx build outputs
+
+[tool.ruff]
+# Extend root .ruff.toml to inherit all linting rules (required when [tool.ruff] section exists)
+extend = "../.ruff.toml"
+
+[tool.ruff.lint]
+# Tutorials are educational code, allow prints and be less strict
+ignore = [
+    "T201",    # Allow print statements in tutorials
+    "T203",    # Allow pprint statements in tutorials
+    "INP001",  # Tutorials don't need __init__.py (not a package)
+    "D100",    # Tutorials don't need module docstrings (have markdown cells)
+    "E402",    # Module level import not at top of file
+    "ANN",     # Relax type annotation requirements for tutorial code
+    "PTH123",  # Allow open() instead of Path.open() for tutorial simplicity
+    "S607",    # Allow subprocess with partial paths (docker, nvidia-smi are in PATH)
+    "S603",    # Allow subprocess calls (tutorial commands are trusted)
+    "UP015",   # Allow explicit mode "r" for clarity in tutorials
+    "PLW1510", # Allow subprocess.run without explicit check (set dynamically in kwargs)
+    "ERA001",  # Allow commented out code in code blocks that are not Python
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "tutorials/generated"]
+addopts = ["-sv", "--log-cli-level=INFO", "--color=yes"]
+norecursedirs = [".*", "build", "dist", "_build"]
+
+[tool.jupytext]
+formats = "py:percent"
+
+[tool.uv]
+managed = true
+find-links = ["../ran/py/mlir-trt-downloads"]
+extra-index-url = ["https://download.pytorch.org/whl/cu129"]
+index-strategy = "unsafe-best-match"
+override-dependencies = [
+    "numpy>=1.26,<2.0",  # Allow sionna to work with JAX 0.5.3 and MLIR-TRT
+]
+
+[tool.uv.sources]
+ran = { path = "../ran/py", editable = true }

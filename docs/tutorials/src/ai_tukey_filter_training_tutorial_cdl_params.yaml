@@ -1,0 +1,53 @@
+# SPDX-FileCopyrightText: Copyright (c) 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+# SPDX-License-Identifier: Apache-2.0
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Configuration for AI Tukey Filter training dataset generation
+# Smaller dataset optimized for tutorial demonstration
+
+output_dir: /opt/nvidia/aerial-framework/out/ai_tukey_filter_tutorial_dataset
+
+# Dataset parameters (smaller for tutorial)
+num_sc_per_prb: 12
+num_prb: 273            # 273 PRBs = 3276 subcarriers (full 5G NR bandwidth)
+train_total: 512         # Small training set for CI testing (recommend 65536) 
+test_total: 32          # Validation/test samples (recommend 2048)
+shard_size: 32          # Samples per shard file
+batch_tf: 32            # TensorFlow batch size for channel generation
+prng_seed: 42           # Random seed for reproducibility
+validation_frac: 0.15   # 15% validation split
+
+# CDL channel model parameters (3GPP 38.901)
+model_type: CDL         # CDL (Clustered Delay Line) model
+tdl_model: C            # Model C: moderate delay spread, typical urban
+delay_spread_ns: 100.0  # RMS delay spread in nanoseconds
+fc_ghz: 3.5             # Carrier frequency: 3.5 GHz (5G mid-band)
+speed_min: 0.0          # Minimum UE speed: 0 m/s (stationary)
+speed_max: 30.0         # Maximum UE speed: 30 m/s (~108 km/h)
+direction: uplink       # Uplink channel (UE → gNB)
+
+# Base Station (gNB) antenna array configuration
+bs_num_rows: 4          # 4 antenna elements (vertical array)
+bs_num_cols: 1          # Single column
+bs_polarization: single # Single polarization
+bs_polarization_type: V # Vertical polarization
+bs_antenna_pattern: "38.901"  # 3GPP antenna radiation pattern
+
+# User Equipment (UE) antenna configuration
+ue_num_rows: 1          # Single antenna element
+ue_num_cols: 1
+ue_polarization: single
+ue_polarization_type: V
+ue_antenna_pattern: "38.901"
+

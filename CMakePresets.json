@@ -1,0 +1,288 @@
+{
+    "version": 3,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 21,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "conf-common",
+            "description": "General settings that apply to all configurations",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "installDir": "${sourceDir}/out/install/${presetName}",
+            "cacheVariables": {
+                "CMAKE_CUDA_ARCHITECTURES": "native"
+            },
+            "condition": {
+                "type": "inList",
+                "string": "${hostSystemName}",
+                "list": [
+                    "Linux",
+                    "Darwin"
+                ]
+            },
+            "vendor": {
+                "microsoft.com/VisualStudioRemoteSettings/CMake/1.0": {
+                    "sourceDir": "$env{HOME}/.vs/$ms{projectDirName}"
+                }
+            }
+        },
+        {
+            "name": "gcc-debug",
+            "displayName": "gcc Debug",
+            "description": "Target with the gcc compiler, debug build type",
+            "inherits": "conf-common",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "gcc",
+                "CMAKE_CXX_COMPILER": "g++",
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "gcc-release",
+            "displayName": "gcc Release",
+            "description": "Target with the gcc compiler, release build type",
+            "inherits": "conf-common",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "gcc",
+                "CMAKE_CXX_COMPILER": "g++",
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+            }
+        },
+        {
+            "name": "clang-debug",
+            "displayName": "clang Debug",
+            "description": "Target with the clang compiler, debug build type",
+            "inherits": "conf-common",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang",
+                "CMAKE_CXX_COMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "clang-release",
+            "displayName": "clang Release",
+            "description": "Target with the clang compiler, release build type",
+            "inherits": "conf-common",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang",
+                "CMAKE_CXX_COMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+            }
+        },
+        {
+            "name": "conf-sanitizer-common",
+            "description": "Common settings for sanitizer builds",
+            "hidden": true,
+            "inherits": "conf-common"
+        },
+        {
+            "name": "conf-asan-env",
+            "description": "Common environment variables for AddressSanitizer builds",
+            "hidden": true,
+            "inherits": "conf-sanitizer-common",
+            "environment": {
+                "ASAN_OPTIONS": "protect_shadow_gap=0:check_initialization_order=1:strict_init_order=1:print_stats=1:atexit=1",
+                "LSAN_OPTIONS": "print_stats=1:suppressions=${sourceDir}/tools/lsan_suppressions.txt",
+                "UBSAN_OPTIONS": "print_stats=1:halt_on_error=1:suppressions=${sourceDir}/tools/ubsan_suppressions.txt"
+            }
+        },
+        {
+            "name": "conf-tsan-env",
+            "description": "Common environment variables for ThreadSanitizer builds",
+            "hidden": true,
+            "inherits": "conf-sanitizer-common",
+            "environment": {
+                "TSAN_OPTIONS": "print_stats=1:halt_on_error=1:suppressions=${sourceDir}/tools/tsan_suppressions.txt"
+            }
+        },
+        {
+            "name": "clang-asan-debug",
+            "displayName": "clang ASan+UBSan+LSan Debug",
+            "description": "clang with AddressSanitizer, UndefinedBehaviorSanitizer, and LeakSanitizer",
+            "inherits": ["conf-asan-env", "clang-debug"],
+            "cacheVariables": {
+                "ENABLE_SANITIZER_ADDRESS": "ON",
+                "ENABLE_SANITIZER_UNDEFINED": "ON", 
+                "ENABLE_SANITIZER_LEAK": "ON"
+            }
+        },
+        {
+            "name": "clang-asan-release",
+            "displayName": "clang ASan+UBSan+LSan Release",
+            "description": "clang with AddressSanitizer, UndefinedBehaviorSanitizer, and LeakSanitizer",
+            "inherits": ["conf-asan-env", "clang-release"],
+            "cacheVariables": {
+                "ENABLE_SANITIZER_ADDRESS": "ON",
+                "ENABLE_SANITIZER_UNDEFINED": "ON", 
+                "ENABLE_SANITIZER_LEAK": "ON"
+            }
+        },
+        {
+            "name": "clang-tsan-debug",
+            "displayName": "clang TSan Debug",
+            "description": "clang with ThreadSanitizer",
+            "inherits": ["conf-tsan-env", "clang-debug"],
+            "cacheVariables": {
+                "ENABLE_SANITIZER_THREAD": "ON"
+            }
+        },
+        {
+            "name": "clang-tsan-release",
+            "displayName": "clang TSan Release",
+            "description": "clang with ThreadSanitizer",
+            "inherits": ["conf-tsan-env", "clang-release"],
+            "cacheVariables": {
+                "ENABLE_SANITIZER_THREAD": "ON"
+            }
+        },
+        {
+            "name": "gcc-asan-debug",
+            "displayName": "gcc ASan+UBSan+LSan Debug", 
+            "description": "gcc with AddressSanitizer, UndefinedBehaviorSanitizer, and LeakSanitizer",
+            "inherits": ["conf-asan-env", "gcc-debug"],
+            "cacheVariables": {
+                "ENABLE_SANITIZER_ADDRESS": "ON",
+                "ENABLE_SANITIZER_UNDEFINED": "ON",
+                "ENABLE_SANITIZER_LEAK": "ON"
+            }
+        },
+        {
+            "name": "gcc-asan-release",
+            "displayName": "gcc ASan+UBSan+LSan Release", 
+            "description": "gcc with AddressSanitizer, UndefinedBehaviorSanitizer, and LeakSanitizer",
+            "inherits": ["conf-asan-env", "gcc-release"],
+            "cacheVariables": {
+                "ENABLE_SANITIZER_ADDRESS": "ON",
+                "ENABLE_SANITIZER_UNDEFINED": "ON",
+                "ENABLE_SANITIZER_LEAK": "ON"
+            }
+        },
+        {
+            "name": "gcc-tsan-debug", 
+            "displayName": "gcc TSan Debug",
+            "description": "gcc with ThreadSanitizer",
+            "inherits": ["conf-tsan-env", "gcc-debug"],
+            "cacheVariables": {
+                "ENABLE_SANITIZER_THREAD": "ON"
+            }
+        },
+        {
+            "name": "gcc-tsan-release", 
+            "displayName": "gcc TSan Release",
+            "description": "gcc with ThreadSanitizer",
+            "inherits": ["conf-tsan-env", "gcc-release"],
+            "cacheVariables": {
+                "ENABLE_SANITIZER_THREAD": "ON"
+            }
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "test-common",
+            "description": "Test CMake settings that apply to all configurations",
+            "hidden": true,
+            "output": {
+                "outputOnFailure": true,
+                "verbosity": "verbose"
+            },
+            "execution": {
+                "noTestsAction": "error",
+                "stopOnFailure": true
+            },
+            "environment": {
+                "BENCHMARK_COLOR": "1",
+                "GTEST_COLOR": "1",
+                "GTEST_PRINT_TIME": "1"
+            }
+        },
+        {
+            "name": "gcc-debug",
+            "displayName": "gcc Debug Tests",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "gcc-debug"
+        },
+        {
+            "name": "gcc-release",
+            "displayName": "gcc Release Tests",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "gcc-release"
+        },
+        {
+            "name": "clang-debug",
+            "displayName": "clang Debug Tests",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "clang-debug"
+        },
+        {
+            "name": "clang-release",
+            "displayName": "clang Release Tests",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "clang-release"
+        },
+        {
+            "name": "clang-asan-debug",
+            "displayName": "clang ASan+UBSan+LSan Debug Tests",
+            "description": "Run tests for clang ASan+UBSan+LSan debug build",
+            "inherits": "test-common",
+            "configurePreset": "clang-asan-debug"
+        },
+        {
+            "name": "clang-asan-release",
+            "displayName": "clang ASan+UBSan+LSan Release Tests",
+            "description": "Run tests for clang ASan+UBSan+LSan release build",
+            "inherits": "test-common",
+            "configurePreset": "clang-asan-release"
+        },
+        {
+            "name": "clang-tsan-debug",
+            "displayName": "clang TSan Debug Tests",
+            "description": "Run tests for clang TSan debug build",
+            "inherits": "test-common",
+            "configurePreset": "clang-tsan-debug"
+        },
+        {
+            "name": "clang-tsan-release",
+            "displayName": "clang TSan Release Tests",
+            "description": "Run tests for clang TSan release build",
+            "inherits": "test-common",
+            "configurePreset": "clang-tsan-release"
+        },
+        {
+            "name": "gcc-asan-debug",
+            "displayName": "gcc ASan+UBSan+LSan Debug Tests",
+            "description": "Run tests for gcc ASan+UBSan+LSan debug build",
+            "inherits": "test-common",
+            "configurePreset": "gcc-asan-debug"
+        },
+        {
+            "name": "gcc-asan-release",
+            "displayName": "gcc ASan+UBSan+LSan Release Tests",
+            "description": "Run tests for gcc ASan+UBSan+LSan release build",
+            "inherits": "test-common",
+            "configurePreset": "gcc-asan-release"
+        },
+        {
+            "name": "gcc-tsan-debug",
+            "displayName": "gcc TSan Debug Tests",
+            "description": "Run tests for gcc TSan debug build",
+            "inherits": "test-common",
+            "configurePreset": "gcc-tsan-debug"
+        },
+        {
+            "name": "gcc-tsan-release",
+            "displayName": "gcc TSan Release Tests",
+            "description": "Run tests for gcc TSan release build",
+            "inherits": "test-common",
+            "configurePreset": "gcc-tsan-release"
+        }
+    ]
+}

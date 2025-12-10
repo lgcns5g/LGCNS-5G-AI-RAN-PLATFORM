@@ -1,0 +1,43 @@
+<mxfile version="29.0.3">
+  <diagram name="Module" id="module-diagram">
+    <mxGraphModel dx="2946" dy="1209" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="module-block" value="Module" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#76B900;strokeWidth=3;fontSize=22;fontColor=#76B900;fontStyle=1;align=center;fontFamily=Helvetica;verticalAlign=top;spacingTop=20;" parent="1" vertex="1">
+          <mxGeometry x="280" y="200" width="280" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="input-port-1" value="Input Port 0&lt;br&gt;name: &quot;example_input_0&quot;&lt;br&gt;device_ptr: 0x7f8a4c00&lt;br&gt;dims: [1, 256, 128]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#76B900;strokeWidth=2;fontSize=11;fontColor=#76B900;align=left;verticalAlign=top;spacingLeft=5;spacingTop=5;fontFamily=Helvetica;" parent="1" vertex="1">
+          <mxGeometry x="88" y="220" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="input-port-2" value="Input Port 2&lt;br&gt;name: &quot;example_input_1&quot;&lt;br&gt;device_ptr: 0x7f8a5d00&lt;br&gt;dims: [1, 512, 64]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#76B900;strokeWidth=2;fontSize=11;fontColor=#76B900;align=left;verticalAlign=top;spacingLeft=5;spacingTop=5;fontFamily=Helvetica;" parent="1" vertex="1">
+          <mxGeometry x="88" y="310" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="output-port-1" value="Output Port 1&lt;br&gt;name: &quot;example_output_0&quot;&lt;br&gt;device_ptr: 0x7f8a6e00&lt;br&gt;dims: [1, 128, 256]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#76B900;strokeWidth=2;fontSize=11;fontColor=#76B900;align=left;verticalAlign=top;spacingLeft=5;spacingTop=5;fontFamily=Helvetica;" parent="1" vertex="1">
+          <mxGeometry x="603" y="220" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="output-port-2" value="Output Port 2&lt;br&gt;name: &quot;example_output_1&quot;&lt;br&gt;device_ptr: 0x7f8a7f00&lt;br&gt;dims: [1, 256, 128]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#76B900;strokeWidth=2;fontSize=11;fontColor=#76B900;align=left;verticalAlign=top;spacingLeft=5;spacingTop=5;fontFamily=Helvetica;" parent="1" vertex="1">
+          <mxGeometry x="603" y="310" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-in-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#76B900;strokeWidth=2;endArrow=classic;endFill=1;endSize=6;" parent="1" source="input-port-1" target="module-block" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-in-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#76B900;strokeWidth=2;endArrow=classic;endFill=1;endSize=6;" parent="1" source="input-port-2" target="module-block" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-out-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#76B900;strokeWidth=2;endArrow=classic;endFill=1;endSize=6;" parent="1" source="module-block" target="output-port-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-out-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#76B900;strokeWidth=2;endArrow=classic;endFill=1;endSize=6;" parent="1" source="module-block" target="output-port-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CZJiWGX-V9-CdjBe0n6D-1" value="CUDA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#60a917;strokeColor=#2D7600;strokeWidth=2;fontSize=16;fontColor=#ffffff;align=center;verticalAlign=middle;spacingLeft=5;spacingTop=2;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="314" y="304" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CZJiWGX-V9-CdjBe0n6D-2" value="TensorRT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#60a917;strokeColor=#2D7600;strokeWidth=2;fontSize=16;fontColor=#ffffff;align=center;verticalAlign=middle;spacingLeft=5;spacingTop=2;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="439" y="304" width="90" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

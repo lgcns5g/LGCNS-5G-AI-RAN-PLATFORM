@@ -1,0 +1,13 @@
+# DOCA 3.0 packages for GPU packet processing
+# Version locked to 3.0.0-058000
+doca-devel=3.0.0-058000
+doca-runtime=3.0.0-058000
+doca-sdk-dpdk-bridge=3.0.0058-1
+doca-sdk-eth=3.0.0058-1
+doca-sdk-flow=3.0.0058-1
+doca-sdk-gpunetio=3.0.0058-1
+libdoca-sdk-dpdk-bridge-dev=3.0.0058-1
+libdoca-sdk-eth-dev=3.0.0058-1
+libdoca-sdk-flow-dev=3.0.0058-1
+libdoca-sdk-gpunetio-dev=3.0.0058-1
+libjson-c-dev

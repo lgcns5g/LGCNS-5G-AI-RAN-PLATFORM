@@ -1,0 +1,58 @@
+# Build directories and binary files
+build/
+out/*
+!out/.gitkeep
+cmake-build-*/
+conan-cache/
+*.tgz
+*.tar.gz
+
+# Data files
+*.npz
+
+# Development files
+**/5GModel/**
+
+# User specific settings
+CMakeUserPresets.json
+
+# IDE files
+.vs/
+.idea/
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.bak
+*.swp
+*~
+_ReSharper*
+*.log
+
+# OS Generated Files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.Trash-*
+$RECYCLE.BIN/
+.TemporaryItems
+ehthumbs.db
+Thumbs.db
+container/.env
+
+# Python generated files
+.mypy_cache/
+.pytest_cache/
+.venv/
+__pycache__/
+.coverage*
+**.egg-info/
+*.whl
+ran/py/.env.python
+
+# Generated tutorial notebooks (converted from .py source files)
+docs/tutorials/generated/

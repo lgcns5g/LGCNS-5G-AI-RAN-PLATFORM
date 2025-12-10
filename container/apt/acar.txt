@@ -1,0 +1,11 @@
+libhdf5-dev # For processing H5 test vectors
+libprotobuf-dev # For cuphyoamlib and testmac
+protobuf-compiler # For cuphyoamlib and testmac
+libgrpc++-dev # For cuphyoamlib and testmac
+libgrpc-dev # For cuphyoamlib and testmac
+protobuf-compiler-grpc # For cuphyoamlib and testmac
+libdw-dev # For backward-cpp dependency
+libdwarf-dev # For backward-cpp dependency
+binutils-dev # For backward-cpp dependency
+libcpp-httplib-dev # For RHCOP PTP in app_utils
+nlohmann-json3-dev # For E3 in data lake

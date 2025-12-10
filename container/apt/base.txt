@@ -1,0 +1,26 @@
+build-essential # compilation tools
+ccache # build caching
+clang # compiler
+clang-format # code formatting
+clang-tidy # static analysis
+cmake # build system
+cmake-format # cmake formatting
+cppcheck # static analysis
+curl # downloading dependencies
+doxygen # docs
+gdb # debugging
+gcovr # code coverage
+git # version control
+git-lfs # git lfs (large file support)
+iwyu # static analysis
+libcap2-bin # get/set capabilities on apps
+libclang-rt-dev # clang sanitizers
+llvm # clang linking
+ninja-build # build system
+openssh-client # ssh client for git operations
+pandoc # docs
+pkg-config # library configuration tool
+python-is-python3 # python compatibility
+python3-dev # python development headers
+sudo # privilege escalation for tools
+vim # text editor for debugging

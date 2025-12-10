@@ -1,0 +1,47 @@
+---
+config:
+  theme: base
+  themeVariables:
+    actorBkg: '#76b900'
+    actorTextColor: '#ffffff'
+    actorBorder: '#76b900'
+---
+sequenceDiagram
+    participant TM as testMAC
+    participant TX as Slot Indication<br/>Trigger (TX)
+    participant RX as FAPI RX Thread
+    participant SM as FAPI State<br/>Machine
+    participant UG as Uplink Graph<br/>(3 Tasks)
+    participant RU as RU Emulator
+
+    Note over TX: Fires every 500μs
+    TX->>TM: SLOT.indication (nvIPC)
+
+    Note over TM: MAC scheduling logic
+    TM->>RX: UL_TTI_REQUEST (nvIPC)
+    RX->>SM: Process message
+    SM->>SM: State: IDLE -> UL_TTI_RECEIVED
+
+    TM->>RX: SLOT_RESPONSE (nvIPC)
+    RX->>SM: Process message
+    SM->>SM: State: UL_TTI_RECEIVED -> SLOT_RESPONSE_RECEIVED
+    SM->>UG: Trigger uplink graph (callback)
+    SM->>SM: State: SLOT_RESPONSE_RECEIVED -> GRAPH_SCHEDULED
+
+    Note over UG: C-Plane Task (Network Core)
+    UG->>UG: Convert FAPI to O-RAN messages
+    UG->>RU: C-Plane TX (DPDK Ethernet)
+
+    Note over UG: U-Plane Task (Network Core)
+    UG->>RU: Ready to receive U-Plane
+    RU->>UG: U-Plane I/Q samples (DOCA NIC)
+    UG->>UG: CUDA kernel reordering
+
+    Note over UG: PUSCH RX Task (Compute Core)
+    UG->>UG: Execute TensorRT pipeline
+    UG->>UG: Generate CRC & measurements
+    UG->>TM: CRC_INDICATION, UCIINDICATION (nvIPC)
+
+    UG->>SM: Graph complete
+    SM->>SM: State: GRAPH_SCHEDULED -> IDLE
+

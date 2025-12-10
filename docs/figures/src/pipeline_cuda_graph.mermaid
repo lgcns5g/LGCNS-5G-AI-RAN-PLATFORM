@@ -1,0 +1,34 @@
+---
+config:
+  theme: base
+  themeVariables:
+    actorBkg: '#76b900'
+    actorTextColor: '#ffffff'
+    actorBorder: '#76b900'
+---
+sequenceDiagram
+    participant M1 as Module 1<br/>(IGraphNodeProvider)
+    participant M2 as Module 2<br/>(IGraphNodeProvider)
+    participant Pipeline as Pipeline
+    participant GM as GraphManager
+
+    Note over M1,GM: Phase 1: Construction
+    Pipeline->>GM: add_kernel_node(Module1, deps)
+    GM->>M1: add_node_to_graph(graph, deps)
+    M1-->>GM: graph_nodes[]
+    Pipeline->>GM: add_kernel_node(Module2, deps)
+    GM->>M2: add_node_to_graph(graph, deps)
+    M2-->>GM: graph_nodes[]
+
+    Note over Pipeline,GM: Phase 2: Instantiation
+    Pipeline->>GM: instantiate_graph()
+    Pipeline->>GM: upload_graph(stream)
+
+    Note over Pipeline,GM: Phase 3: Execution
+    Pipeline->>GM: launch_graph(stream)
+
+    Note over M1,GM: Phase 4: Update (per iteration)
+    Pipeline->>M1: update_graph_node_params(exec, params)
+    Pipeline->>M2: update_graph_node_params(exec, params)
+    Pipeline->>GM: launch_graph(stream)
+

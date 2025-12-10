@@ -1,0 +1,133 @@
+# SPDX-FileCopyrightText: Copyright (c) 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+# SPDX-License-Identifier: Apache-2.0
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# RU Emulator Configuration for Fronthaul Integration Test
+#
+# Reference: aerial_sdk-src/cuPHY-CP/ru-emulator/config/config.yaml
+#
+# Differences from reference config (all other 40+ fields identical):
+#   - ul_core_list: [2,3,4,5] vs [2,3,4,5,6,7,8,9,10,11]
+#   - dl_core_list: [6,7,8,9] vs [12,13,14,15,16,17,18,19,20,21]
+#   - dl_rx_core_list: [10,11,12,13] vs [68,70,72,74,76,78,80,82,84,86,88,90,92,94,96,98,100,102,104,106]
+#   - nics[0].nic_interface: '@RU_PCIE_ADDR_SHORT@' vs 'b5:00.0'
+#   - peers[0].peerethaddr: '@DU_MAC_ADDRESS@' vs '48:b0:2d:a6:27:d6'
+#   - cell_configs: 2 cells vs 20 cells (Cell1, Cell2 only)
+#
+# Template file - values substituted at runtime by Python script from auto-detected interfaces
+---
+aerial_sdk_version: 25-3-cubb
+ru_emulator:
+  # CPU core assignments (simplified for test - can use default values)
+  ul_core_list: [2,3,4,5]
+  dl_core_list: [6,7,8,9]
+  dl_rx_core_list: [10,11,12,13]
+  low_priority_core: 23
+
+  # nvlog instance name
+  nvlog_name: ru
+
+  # Send cell config/start/stop request via OAM command
+  oam_cell_ctrl_cmd: 0
+
+  # NIC PCIe address - RU emulator receives packets here
+  # Derived from FRONTHAUL_RU_INTERFACE at CMake configure time
+  nics:
+    - nic_interface: '@RU_PCIE_ADDR_SHORT@'  # e.g., 'aa:00.1'
+
+  # DU-side MAC addresses - peer MACs (where packets come FROM)
+  # Derived from FRONTHAUL_DU_INTERFACE at CMake configure time
+  peers:
+    - peerethaddr: "@DU_MAC_ADDRESS@"  # e.g., '94:6d:ae:53:b0:6b'
+
+  # Cell configurations - TEMPLATE CELL (Python script replicates this)
+  # NOTE: Python script will generate N copies with updated name and VLAN
+  # Each cell uses different VLAN for hardware-level filtering (since eCPRI filtering not supported)
+  cell_configs:
+    -
+      name: "Cell1"  # Will be updated to Cell1, Cell2, Cell3, ...
+      eth: "@RU_MAC_ADDRESS@"
+      eAxC_UL: [0,1,2,3]
+      eAxC_DL: [0,1,2,3]
+      eAxC_prach_list: [15,7,0,1]
+      eAxC_srs_list: [9,3,5,6]
+      dl_iq_data_fmt: {comp_meth: 1, bit_width: 9}
+      ul_iq_data_fmt: {comp_meth: 1, bit_width: 9}
+      fs_offset_dl: 0
+      exponent_dl: 4
+      ref_dl: 0
+      ru_type: 3
+      peer: 0  # Index into peers array
+      nic: 0   # Index into nics array
+      vlan: 2  # Will be updated to 2, 3, 4, ... for each cell
+      pcp: 7
+
+  # Test duration and validation
+  tti: 500
+  payload_validation: 1
+  dl_up_sanity_check: 1
+  validate_dl_timing: 1
+  max_sect_stats: 0
+  dl_bfw_validation: 1
+  ul_bfw_validation: 1
+  timing_histogram: 0
+  timing_histogram_bin_size: 1000
+  dl_approx_validation: 0
+  enable_mmimo: 0
+  enable_beam_forming: 0
+  enable_cplane_worker_tracing: 0
+  dl_warmup_slots: 2000
+  fix_beta_dl: 1
+  enable_dl_proc_mt: 0
+  debug_u_plane_prints: 0
+  debug_u_plane_threshold: 20
+
+  # Aerial fronthaul DPDK configuration
+  aerial_fh_txq_size: 16384
+  aerial_fh_rxq_size: 8192
+  aerial_fh_tx_request_num: 128
+  aerial_fh_dpdk_thread: 1
+  aerial_fh_pdump_client_thread: -1
+  aerial_fh_accu_tx_sched_res_ns: 500
+  aerial_fh_dpdk_file_prefix: "ru_emulator"
+  aerial_fh_per_rxq_mempool: 0
+  aerial_fh_cpu_mbuf_pool_size_per_rxq: 32768
+  aerial_fh_cpu_mbuf_pool_rx_size: 262144
+  aerial_fh_cpu_mbuf_pool_tx_size: 262144
+  aerial_fh_split_rx_tx_mempool: 1
+  aerial_fh_mtu: 1514
+  enable_srs_eaxcid_pacing: 0
+  # SRS eAxC ID Pacing Configuration (only required if enable_srs_eaxcid_pacing: 1)
+  srs_pacing_s3_srs_symbols: 2
+  srs_pacing_s4_srs_symbols: 0
+  srs_pacing_s5_srs_symbols: 0
+  srs_pacing_eaxcids_per_tx_window: 4
+  srs_pacing_eaxcids_per_symbol: 64
+
+  # O-RAN timing parameters
+  oran_timing_info:
+    dl_c_plane_timing_delay: 470
+    dl_c_plane_window_size: 51
+    ul_c_plane_timing_delay: 336
+    ul_c_plane_window_size: 51
+    dl_u_plane_timing_delay: 345
+    dl_u_plane_window_size: 51
+    ul_u_plane_tx_offset: 231
+    ul_u_plane_tx_offset_srs: 231
+
+  # O-RAN beam ID configuration
+  oran_beam_id_info: {static_beam_id_start: 1, static_beam_id_end: 16527, dynamic_beam_id_start: 16528, dynamic_beam_id_end: 32767}
+
+  # eCPRI header configuration for testing
+  ecpri_hdr_cfg_test: {enable: 0, ecpri_hdr_cfg_file: ecpri_hdr_cfg.yaml}

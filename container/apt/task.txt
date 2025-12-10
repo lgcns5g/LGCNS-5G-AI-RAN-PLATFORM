@@ -1,0 +1,1 @@
+nsight-systems-2025.3.2 # for profiling

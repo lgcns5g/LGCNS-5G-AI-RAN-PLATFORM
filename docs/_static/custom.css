@@ -1,0 +1,30 @@
+/* Custom styling for nvidia-sphinx-theme */
+
+.highlight-box {
+    background: linear-gradient(135deg, #76b900, #4c7a00);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.grid-item-card {
+    transition: transform 0.2s ease-in-out;
+}
+
+.grid-item-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Custom code block styling */
+.highlight {
+    border-radius: 6px;
+    border: 1px solid #e1e4e8;
+}
+
+/* Custom admonition colors */
+.admonition.note {
+    border-left: 4px solid #76b900;
+}

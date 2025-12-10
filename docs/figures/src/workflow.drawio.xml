@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile version="28.2.8">
+  <diagram name="Page-1" id="8uGORG3gaPGW2mFzN_sm">
+    <mxGraphModel dx="1554" dy="914" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="RE6yir5ZvcjpFyYvLqiv-1" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="138" y="269.25" width="612" height="179" as="geometry" />
+        </mxCell>
+        <mxCell id="RE6yir5ZvcjpFyYvLqiv-2" value="" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=NVIDIA Sans Regular;fontSize=12;gradientColor=light-dark(#FFBD26,#FFBD26);fillColor=light-dark(#2AE5FE,#2AE5FE);gradientDirection=east;opacity=20;arcSize=6;" vertex="1" parent="RE6yir5ZvcjpFyYvLqiv-1">
+          <mxGeometry width="612" height="179" as="geometry" />
+        </mxCell>
+        <mxCell id="RE6yir5ZvcjpFyYvLqiv-3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#000000,#DDDDDD);fontFamily=NVIDIA Sans Medium;fontSize=10;startSize=4;endArrow=block;endSize=4;fillColor=#000000;jumpSize=12;fontColor=light-dark(#000000,#DDDDDD);" edge="1" parent="RE6yir5ZvcjpFyYvLqiv-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="434" y="162.67999999999995" as="targetPoint" />
+            <mxPoint x="182.00351351351355" y="162.33999999999992" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RE6yir5ZvcjpFyYvLqiv-4" value="&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;Prototyping&lt;br&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=NVIDIA Sans Regular;fontSize=12;fillColor=none;strokeColor=none;align=center;fontStyle=1;fontColor=light-dark(#000000,#DDDDDD);" vertex="1" parent="RE6yir5ZvcjpFyYvLqiv-1">
+          <mxGeometry x="86" y="152.75" width="78" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="RE6yir5ZvcjpFyYvLqiv-5" value="&lt;span style=&quot;font-weight: 700; text-wrap-mode: nowrap;&quot;&gt;Latency Requirements&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=NVIDIA Sans Regular;fontSize=12;strokeColor=none;fillColor=none;fontColor=light-dark(#000000,#DDDDDD);" vertex="1" parent="RE6yir5ZvcjpFyYvLqiv-1">
+          <mxGeometry x="237.75" y="142.75" width="136.5" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="RE6yir5ZvcjpFyYvLqiv-6" value="&lt;span style=&quot;font-weight: 700; text-align: right; text-wrap-mode: nowrap;&quot;&gt;Deployment&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=NVIDIA Sans Regular;fontSize=12;fillColor=none;strokeColor=none;fontColor=light-dark(#000000,#DDDDDD);" vertex="1" parent="RE6yir5ZvcjpFyYvLqiv-1">
+          <mxGeometry x="447" y="152.75" width="80" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="RE6yir5ZvcjpFyYvLqiv-7" value="" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=NVIDIA Sans Regular;fontSize=12;fillColor=none;strokeColor=light-dark(#000000,#DDDDDD);arcSize=6;align=center;fontColor=light-dark(#000000,#DDDDDD);" vertex="1" parent="RE6yir5ZvcjpFyYvLqiv-1">
+          <mxGeometry x="382" y="16.25" width="210" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="RE6yir5ZvcjpFyYvLqiv-8" value="" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=NVIDIA Sans Regular;fontSize=12;fillColor=none;strokeColor=light-dark(#000000,#DDDDDD);arcSize=6;align=center;fontColor=light-dark(#000000,#DDDDDD);" vertex="1" parent="RE6yir5ZvcjpFyYvLqiv-1">
+          <mxGeometry x="20" y="16.25" width="210" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="RE6yir5ZvcjpFyYvLqiv-9" value="JAX / PyTorch" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=NVIDIA Sans Regular;fontSize=12;fillColor=none;strokeColor=light-dark(#000000,#DDDDDD);fontColor=light-dark(#000000,#DDDDDD);" vertex="1" parent="RE6yir5ZvcjpFyYvLqiv-1">
+          <mxGeometry x="44" y="94.25" width="90" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="RE6yir5ZvcjpFyYvLqiv-10" value="TensorRT" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=NVIDIA Sans Regular;fontSize=12;fillColor=none;strokeColor=light-dark(#000000,#DDDDDD);fontColor=light-dark(#000000,#DDDDDD);" vertex="1" parent="RE6yir5ZvcjpFyYvLqiv-1">
+          <mxGeometry x="147.20000000000005" y="94.25" width="60" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="RE6yir5ZvcjpFyYvLqiv-11" value="Pipeline API" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=NVIDIA Sans Regular;fontSize=12;fillColor=none;strokeColor=light-dark(#000000,#DDDDDD);fontColor=light-dark(#000000,#DDDDDD);" vertex="1" parent="RE6yir5ZvcjpFyYvLqiv-1">
+          <mxGeometry x="402" y="94.25" width="80" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="RE6yir5ZvcjpFyYvLqiv-12" value="End-to-end Emulation" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=NVIDIA Sans Regular;fontSize=12;fillColor=none;strokeColor=light-dark(#000000,#DDDDDD);fontColor=light-dark(#000000,#DDDDDD);" vertex="1" parent="RE6yir5ZvcjpFyYvLqiv-1">
+          <mxGeometry x="498" y="94.25" width="80" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="RE6yir5ZvcjpFyYvLqiv-13" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;startArrow=block;endSize=8;startSize=8;rounded=1;strokeColor=light-dark(#000000,#DDDDDD);fontFamily=NVIDIA Sans Medium;fontSize=10;fillColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startFill=1;endFill=1;fontColor=light-dark(#000000,#DDDDDD);" edge="1" parent="RE6yir5ZvcjpFyYvLqiv-1" source="RE6yir5ZvcjpFyYvLqiv-8" target="RE6yir5ZvcjpFyYvLqiv-7">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="258" y="90.75" as="sourcePoint" />
+            <mxPoint x="358" y="90.75" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RE6yir5ZvcjpFyYvLqiv-14" value="&lt;span style=&quot;font-weight: 700; text-wrap-mode: nowrap;&quot;&gt;Continuous integration,&amp;nbsp;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-weight: 700; text-wrap-mode: nowrap;&quot;&gt;feedback, and&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: 700; text-wrap-mode: nowrap;&quot;&gt;optimization&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=NVIDIA Sans Regular;fontSize=11.5;strokeColor=none;fillColor=none;arcSize=0;fontColor=light-dark(#000000,#DDDDDD);" vertex="1" parent="RE6yir5ZvcjpFyYvLqiv-1">
+          <mxGeometry x="239" y="24.25" width="138" height="63" as="geometry" />
+        </mxCell>
+        <mxCell id="RE6yir5ZvcjpFyYvLqiv-15" value="&lt;div style=&quot;font-weight: 700; text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;Development Environment&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-weight: 700; text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-weight: 700; text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;Machine with GPU&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=NVIDIA Sans Regular;fontSize=12;fillColor=none;strokeColor=none;fontColor=light-dark(#000000,#DDDDDD);" vertex="1" parent="RE6yir5ZvcjpFyYvLqiv-1">
+          <mxGeometry x="24.5" y="18.25" width="201" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RE6yir5ZvcjpFyYvLqiv-16" value="&lt;div style=&quot;font-weight: 700; text-wrap-mode: nowrap;&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;Runtime Environment&lt;/font&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;GPU server with NIC&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=NVIDIA Sans Regular;fontSize=12;fillColor=none;strokeColor=none;fontColor=light-dark(#000000,#DDDDDD);" vertex="1" parent="RE6yir5ZvcjpFyYvLqiv-1">
+          <mxGeometry x="386.5" y="18.25" width="201" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

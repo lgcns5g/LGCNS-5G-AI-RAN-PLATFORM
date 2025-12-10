@@ -1,0 +1,50 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "phy-ran-app-tools"
+dynamic = ["version"]
+description = "PHY RAN App integration test tools"
+license = { text = "Apache 2.0" }
+authors = [
+    { name = "NVIDIA Aerial" },
+]
+requires-python = ">=3.12"
+dependencies = [
+    "scapy>=2.6.1",
+    "orjson>=3.8.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=23.0.0",
+    "isort>=5.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0.0",
+]
+
+[tool.uv]
+managed = true
+
+# Hatchling version configuration - read from root VERSION file
+[tool.hatch.version]
+path = "../../../../VERSION"
+pattern = "(?P<version>.+)"
+
+[tool.hatch.build.sources]
+"src" = ""
+
+[tool.hatch.build.targets.wheel]
+only-include = ["src"]
+
+[tool.black]
+line-length = 100
+target-version = ['py312']
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.pylint.format]
+max-line-length = 100

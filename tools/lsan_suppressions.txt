@@ -1,0 +1,3 @@
+# Suppressions for false positives and third-party libraries
+
+leak:doca_gpu_create

@@ -1,0 +1,56 @@
+/*
+ * SPDX-FileCopyrightText: Copyright (c) 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+#include <memory>
+
+#include <gtest/gtest.h>
+
+#include "log/components.hpp"
+#include "log/rt_log.hpp"
+#include "log/rt_log_macros.hpp"
+#include "task/task_log.hpp"
+#include "task/task_utils.hpp"
+
+namespace {
+namespace ft = framework::task;
+
+/**
+ * Global test setup - runs once before all tests
+ *
+ * Sets up debug logging for all task tests.
+ */
+class LogTestEnv : public ::testing::Environment {
+public:
+    void SetUp() override {
+        // Set up logging for all tests
+
+        framework::log::Logger::set_level(framework::log::LogLevel::Debug);
+        framework::log::register_component<ft::TaskLog>(framework::log::LogLevel::Debug);
+
+        ft::enable_sanitizer_compatibility();
+
+        RT_LOG_DEBUG("Initialized logging environment");
+    }
+
+    void TearDown() override {}
+};
+
+// NOLINTNEXTLINE(cert-err58-cpp,cppcoreguidelines-owning-memory,readability-identifier-naming)
+const auto *const g_env =
+        ::testing::AddGlobalTestEnvironment(std::make_unique<LogTestEnv>().release());
+
+} // namespace

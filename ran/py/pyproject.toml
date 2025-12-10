@@ -1,0 +1,194 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ran"
+dynamic = ["version"]
+description = "RAN Python package"
+license = { text = "Apache 2.0" }
+authors = [
+    { name = "NVIDIA Aerial" },
+]
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "numpy>=2.0.0",
+    "tqdm>=4.6.0",
+    "h5py>=3.0.0",
+    "python-dotenv>=1.0.0",
+    "pyyaml>=6.0.0",
+]
+
+[project.optional-dependencies]
+# PHY JAX dependencies - installed when ENABLE_MLIR_TRT=ON
+# Includes JAX, TensorRT, PyTorch, and related ML frameworks
+phy_jax = [
+    "jax[cuda12]==0.5.3",
+    "orbax-checkpoint>=0.11.5",
+    "flax>=0.10.0",
+    "absl-py>=2.3.0",
+    "tensorrt==10.12.0.36",
+    "safetensors>=0.6.0",
+    "torch==2.8.0+cu129",
+    "torchvision>=0.19.0,<0.24.0",
+]
+# MLIR-TRT wheels - installed separately after download when ENABLE_MLIR_TRT=ON
+# Not part of base dependencies, installed via: uv pip install -e ".[mlir_trt_wheels]"
+mlir_trt_wheels = [
+    "mlir-tensorrt-runtime==0.4.2.dev20251112+cuda12.trt1012",
+    # "mlir-tensorrt-jax==0.4.2.dev20251112+cuda12.trt1012",
+    "mlir-tensorrt-compiler==0.4.2.dev20251112+cuda12.trt1012",
+]
+
+datasets = [
+    # Sionna and TensorFlow for channel dataset generation
+    # WARNING: Cannot be used in same process as MLIR-TensorRT
+    # Install with: pip install -e ".[datasets]"
+    "sionna-no-rt>=1.0.0",
+]
+
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "isort>=5.0.0",
+    "flake8>=6.0.0",
+    "pylint>=3.0.0",
+    "mypy>=1.0.0",
+    "ruff>=0.1.0",
+    "ipykernel>=6.0.0",
+    "jupyter>=1.1.0",
+    "jupyterlab>=4.4.0",
+    "jupyter-server>=2.7.2",
+    "notebook>=7.4.0",
+    "matplotlib>=3.10", 
+    "types-tqdm>=4.0.0",
+    "types-PyYAML>=6.0.0",
+]
+
+# UV configuration for MLIR-TensorRT wheels
+[tool.uv]
+find-links = ["mlir-trt-downloads"]
+extra-index-url = ["https://download.pytorch.org/whl/cu129"]
+index-strategy = "unsafe-best-match"  # Allow selecting best versions across all indexes
+override-dependencies = [
+    "numpy>=1.26,<2.0",  # Allow sionna to work with JAX 0.5.3 and MLIR-TRT
+]
+managed = true
+# Support both x86_64 and aarch64 architectures for cross-platform lock files
+environments = [
+    "sys_platform == 'linux' and platform_machine == 'x86_64'",
+    "sys_platform == 'linux' and platform_machine == 'aarch64'",
+]
+
+# Hatchling version configuration - read from __version__.py
+[tool.hatch.version]
+source = "code"
+path = "src/ran/__version__.py"
+
+# Hatchling configuration for src layout
+[tool.hatch.build.sources]
+"src" = ""
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ran", "test_vectors"]
+force-include = { "../../VERSION" = "ran/VERSION" }
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/",
+    "tests/",
+    "README.md",
+    "pyproject.toml",
+    "../../VERSION",
+]
+
+[tool.black]
+line-length = 100
+target-version = ['py312']
+
+[tool.isort]
+profile = "black"
+line_length = 100
+known_first_party = ["ran"]
+
+[tool.pylint.format]
+max-line-length = 100
+
+[tool.pyright]
+pythonVersion = "3.12"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# Always use development-friendly flags
+addopts = [
+    "-sv",
+    "--color=yes",
+    "--log-cli-level=DEBUG"
+]
+# Filter warnings coming from MLIR TensorRT JAX package
+filterwarnings = [
+    "ignore:.*jax\\.core\\.Primitive is deprecated.*:DeprecationWarning",
+]
+# Register custom markers
+markers = [
+    "mlir_trt: marks tests that require MLIR TRT features (deselected when ENABLE_MLIR_TRT=OFF)",
+]
+
+[tool.mypy]
+python_version = "3.12"
+# Keep signal, limit noise
+warn_unused_ignores = true
+no_implicit_optional = true
+strict_equality = true
+follow_imports = "normal"
+exclude = ["5GModel"]
+mypy_path = ["src"]
+
+# Turn off the Any police to stop cascades
+disallow_any_expr = false
+disallow_any_explicit = false
+disallow_any_generics = false
+disallow_any_unimported = false
+disallow_any_decorated = false
+warn_return_any = false
+
+# Keep src honest at function boundaries
+check_untyped_defs = true
+disallow_untyped_defs = true
+
+# You can mirror your CLI exclude here if you want:
+# exclude = ["5GModel"]
+
+# ---- Per-module overrides (pyproject style) ----
+# Ignore import-not-found for optional phy_jax dependencies
+[[tool.mypy.overrides]]
+module = [
+    "jax.*",
+    "tensorrt.*",
+    "torch.*",
+    "flax.*",
+    "optax.*",
+    "safetensors.*",
+]
+ignore_missing_imports = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+# Ignore specific lint rules
+ignore = [
+    "FBT001",   # Boolean positional argument in function definition
+    "FBT002",   # Boolean default positional argument in function definition
+    "EM101",    # Exception must not use a string literal
+    "PLR0912",  # Too many branches
+    "PLR2004",  # Magic value used in comparison
+    "SIM108",   # Use ternary operator instead of if-else-block
+    "T201",     # print found (allow in test files)
+    "N806",     # Variable in function should be lowercase (mathematical notation uses uppercase)
+    "RET504",   # Unnecessary assignment before return (improves readability for complex expressions)
+    "D100",     # Missing docstring in public module
+    "TID252",   # Prefer absolute imports (relative imports are fine within packages)
+]

@@ -1,0 +1,32 @@
+---
+config:
+  theme: base
+  themeVariables:
+    actorBkg: '#76b900'
+    actorTextColor: '#ffffff'
+    actorBorder: '#76b900'
+---
+sequenceDiagram
+    participant M1 as Module 1<br/>(IAllocationInfoProvider)
+    participant M2 as Module 2<br/>(IAllocationInfoProvider)
+    participant Pipeline as Pipeline
+    participant PMM as PipelineMemoryManager
+
+    Note over M1,PMM: Phase 1: Requirements Collection
+    Pipeline->>M1: get_requirements()
+    M1-->>Pipeline: ModuleMemoryRequirements<br/>(descriptors, tensors, alignment)
+    Pipeline->>M2: get_requirements()
+    M2-->>Pipeline: ModuleMemoryRequirements<br/>(descriptors, tensors, alignment)
+
+    Note over Pipeline,PMM: Phase 2: Allocation
+    Pipeline->>PMM: create_for_modules([Module1, Module2])
+    PMM->>PMM: Allocate CPU and GPU buffers:<br/>Static descriptors
+    PMM->>PMM: <br/>Dynamic descriptors<br/>Device tensors
+    PMM-->>Pipeline: PipelineMemoryManager ready
+
+    Note over M1,PMM: Phase 3: Distribution
+    Pipeline->>M1: setup_memory(memory_slice)
+    Pipeline->>M2: setup_memory(memory_slice)
+
+    Note over M1,M2: Memory remains constant
+

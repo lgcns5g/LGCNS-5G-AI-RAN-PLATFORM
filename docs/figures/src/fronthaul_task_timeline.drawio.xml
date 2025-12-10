@@ -1,0 +1,149 @@
+<mxfile version="26.2.15">
+  <diagram id="fronthaul_task_timeline" name="Fronthaul Task Timeline">
+    <mxGraphModel dx="2066" dy="1123" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="500" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="slot0_box" value="" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#003b4d;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="60" y="80" width="160" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="slot0_header" value="Task Graph executes on&lt;br&gt;worker core 8" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;fontSize=11;fontStyle=1;" parent="slot0_box" vertex="1">
+          <mxGeometry x="10" y="10" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="slot0_u" value="U-Plane&#xa;Task" style="ellipse;whiteSpace=wrap;html=1;fillColor=#005b8a;strokeColor=#003b4d;fontSize=11;fontStyle=1;fontColor=#ffffff;" parent="slot0_box" vertex="1">
+          <mxGeometry x="30" y="50" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="slot0_c" value="C-Plane&#xa;Task" style="ellipse;whiteSpace=wrap;html=1;fillColor=#3fae2a;strokeColor=#2b6f1b;fontSize=11;fontStyle=1;fontColor=#ffffff;" parent="slot0_box" vertex="1">
+          <mxGeometry x="30" y="160" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="slot0_dep" value="&lt;b&gt;Depends on&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;fontColor=#000000;" parent="slot0_box" vertex="1">
+          <mxGeometry x="10" y="120" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="slot0_edge" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#005b8a;strokeWidth=2;" parent="slot0_box" source="slot0_u" target="slot0_c" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="slot0_label" value="Slot 0" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=bottom;whiteSpace=wrap;fontSize=12;fontStyle=1;" parent="slot0_box" vertex="1">
+          <mxGeometry x="50" y="225" width="60" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="slot1_box" value="" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#003b4d;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="260" y="80" width="160" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="slot1_header" value="Task Graph executes on&lt;br&gt;worker core 8" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;fontSize=11;fontStyle=1;" parent="slot1_box" vertex="1">
+          <mxGeometry x="10" y="10" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="slot1_u" value="U-Plane&#xa;Task" style="ellipse;whiteSpace=wrap;html=1;fillColor=#005b8a;strokeColor=#003b4d;fontSize=11;fontStyle=1;fontColor=#ffffff;" parent="slot1_box" vertex="1">
+          <mxGeometry x="30" y="50" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="slot1_c" value="C-Plane&#xa;Task" style="ellipse;whiteSpace=wrap;html=1;fillColor=#3fae2a;strokeColor=#2b6f1b;fontSize=11;fontStyle=1;fontColor=#ffffff;" parent="slot1_box" vertex="1">
+          <mxGeometry x="30" y="160" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="slot1_dep" value="&lt;b&gt;Depends on&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;fontColor=#000000;" parent="slot1_box" vertex="1">
+          <mxGeometry x="10" y="120" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="slot1_edge" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#005b8a;strokeWidth=2;" parent="slot1_box" source="slot1_u" target="slot1_c" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="slot1_label" value="Slot 1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=bottom;whiteSpace=wrap;fontSize=12;fontStyle=1;" parent="slot1_box" vertex="1">
+          <mxGeometry x="50" y="225" width="60" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="slot2_box" value="" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#003b4d;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="460" y="80" width="160" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="slot2_header" value="Task Graph executes on&lt;br&gt;worker core 8" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;fontSize=11;fontStyle=1;" parent="slot2_box" vertex="1">
+          <mxGeometry x="10" y="10" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="slot2_u" value="U-Plane&#xa;Task" style="ellipse;whiteSpace=wrap;html=1;fillColor=#005b8a;strokeColor=#003b4d;fontSize=11;fontStyle=1;fontColor=#ffffff;" parent="slot2_box" vertex="1">
+          <mxGeometry x="30" y="50" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="slot2_c" value="C-Plane&#xa;Task" style="ellipse;whiteSpace=wrap;html=1;fillColor=#3fae2a;strokeColor=#2b6f1b;fontSize=11;fontStyle=1;fontColor=#ffffff;" parent="slot2_box" vertex="1">
+          <mxGeometry x="30" y="160" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="slot2_dep" value="&lt;b&gt;Depends on&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;fontColor=#000000;" parent="slot2_box" vertex="1">
+          <mxGeometry x="10" y="120" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="slot2_edge" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#005b8a;strokeWidth=2;" parent="slot2_box" source="slot2_u" target="slot2_c" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="slot2_label" value="Slot 2" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=bottom;whiteSpace=wrap;fontSize=12;fontStyle=1;" parent="slot2_box" vertex="1">
+          <mxGeometry x="50" y="225" width="60" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="slot3_box" value="" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#003b4d;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="660" y="80" width="160" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="slot3_header" value="Task Graph executes on&lt;br&gt;worker core 8" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;fontSize=11;fontStyle=1;" parent="slot3_box" vertex="1">
+          <mxGeometry x="10" y="10" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="slot3_u" value="U-Plane&#xa;Task" style="ellipse;whiteSpace=wrap;html=1;fillColor=#005b8a;strokeColor=#003b4d;fontSize=11;fontStyle=1;fontColor=#ffffff;" parent="slot3_box" vertex="1">
+          <mxGeometry x="30" y="50" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="slot3_c" value="C-Plane&#xa;Task" style="ellipse;whiteSpace=wrap;html=1;fillColor=#3fae2a;strokeColor=#2b6f1b;fontSize=11;fontStyle=1;fontColor=#ffffff;" parent="slot3_box" vertex="1">
+          <mxGeometry x="30" y="160" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="slot3_dep" value="&lt;b&gt;Depends on&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;fontColor=#000000;" parent="slot3_box" vertex="1">
+          <mxGeometry x="10" y="120" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="slot3_edge" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#005b8a;strokeWidth=2;" parent="slot3_box" source="slot3_u" target="slot3_c" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="slot3_label" value="Slot 3" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=bottom;whiteSpace=wrap;fontSize=12;fontStyle=1;" parent="slot3_box" vertex="1">
+          <mxGeometry x="50" y="225" width="60" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="trigger_box" value="Timed Trigger schedules task graph every slot&#xa;Uses system time derived from PTP Hardware Clock" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#4a90e2;fillColor=none;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="60" y="410" width="760" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow0" value="Schedule Tasks" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#f2b01c;strokeWidth=3;fontSize=11;fontStyle=1;" parent="1" source="trigger_box" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="140" y="370" as="sourcePoint" />
+            <mxPoint x="140" y="340" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="140" y="370" />
+              <mxPoint x="140" y="370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gap01" value="500μs" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontStyle=0;" parent="1" vertex="1">
+          <mxGeometry x="190" y="370" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="gap12" value="500μs" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontStyle=0;" parent="1" vertex="1">
+          <mxGeometry x="400" y="370" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="gap23" value="500μs" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontStyle=0;" parent="1" vertex="1">
+          <mxGeometry x="610" y="370" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="worker8" value="Pinned to core 7" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=bottom;whiteSpace=wrap;fontSize=11;fontStyle=0;" parent="1" vertex="1">
+          <mxGeometry x="360" y="460" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="qbf7MAQCvOY6pHfQZ-YB-1" value="Schedule Tasks" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#f2b01c;strokeWidth=3;fontSize=11;fontStyle=1;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="339.71000000000004" y="410" as="sourcePoint" />
+            <mxPoint x="339.71000000000004" y="340" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="339.71000000000004" y="370" />
+              <mxPoint x="339.71000000000004" y="370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qbf7MAQCvOY6pHfQZ-YB-2" value="Schedule Tasks" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#f2b01c;strokeWidth=3;fontSize=11;fontStyle=1;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="539.74" y="410" as="sourcePoint" />
+            <mxPoint x="539.74" y="340" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="539.74" y="370" />
+              <mxPoint x="539.74" y="370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qbf7MAQCvOY6pHfQZ-YB-3" value="Schedule Tasks" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#f2b01c;strokeWidth=3;fontSize=11;fontStyle=1;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="739.77" y="410" as="sourcePoint" />
+            <mxPoint x="739.77" y="340" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="739.77" y="370" />
+              <mxPoint x="739.77" y="370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

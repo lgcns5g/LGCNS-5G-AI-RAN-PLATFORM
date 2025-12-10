@@ -1,3 +1,11 @@
+The contents of this repository are licensed under Apache 2.0. When pulling
+the Aerial container from NGC (NVIDIA GPU Cloud) and building the Aerial 
+Framework, you will download NVIDIA and 3rd party software 
+and materials, which are governed by licenses and terms as described at 
+https://docs.nvidia.com/aerial/framework/latest/acknowledgements.html.
+
+###########################################################################
+
                                  Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
