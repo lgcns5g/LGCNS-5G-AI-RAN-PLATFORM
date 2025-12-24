@@ -1,3 +1,91 @@
+# LGCNS-5G-RAN-Platform
+
+LGCNS-5G-RAN-Platform is a GPU-accelerated 5G RAN platform framework
+productized by LG CNS, based on the NVIDIA Aerial Framework.
+
+This project provides a unified platform for building, integrating,
+and operating GPU-accelerated 5G RAN components, including PHY and
+upper-layer RAN stacks, in virtualized and cloud-native environments.
+
+## Key Features
+
+- GPU-accelerated RAN platform framework
+- Based on NVIDIA Aerial Framework
+- Modular integration of RAN PHY and RAN Stack components
+- Containerized and cloud-native architecture
+- Optimized for NVIDIA CUDA-enabled GPU platforms
+- Product-grade build, deployment, and operational tooling
+- Designed for PoC, lab, and commercial RAN environments
+
+## Platform Scope
+
+LGCNS-5G-RAN-Platform serves as the **integration and execution framework**
+for LGCNS RAN components, rather than a protocol implementation itself.
+
+The platform provides:
+
+- Lifecycle management for RAN components
+- Integration framework for GPU-accelerated PHY
+- Interfaces for RAN Stack (MAC/RLC/PDCP/RRC)
+- Runtime orchestration and configuration
+- Deployment templates and automation
+
+## Supported Use Cases
+
+- GPU-based vRAN platform validation
+- 5G RAN PoC and lab environments
+- Private 5G deployments
+- Integration testing of RAN components
+- Research and performance evaluation
+
+
+## Notice
+
+This repository is derived from the following upstream open-source project:
+
+- **NVIDIA Aerial Framework**  
+  https://github.com/NVIDIA/aerial-framework
+
+The upstream project provides a reference framework for building
+GPU-accelerated 5G RAN solutions on NVIDIA platforms.
+
+LG CNS has adapted and extended the upstream framework to support
+product-oriented integration, deployment, and operational requirements.
+
+### Modifications and Enhancements by LG CNS
+
+- Platform integration for LGCNS RAN components
+- Product-oriented directory and configuration structure
+- Deployment automation and operational tooling
+- Integration with LGCNS 5G Core and RAN solutions
+- Validation for PoC and commercial environments
+
+
+## License
+
+This project is licensed under the **Apache License, Version 2.0**.
+
+The original upstream project and this derivative work are both
+distributed under the Apache License 2.0.
+
+
+## Contact
+
+For inquiries related to LG CNS 5G RAN solutions, please contact
+the LG CNS 5G Business team through official LG CNS channels.
+
+
+</br></br></br>
+--- 
+# Appendix A. Upstream Open Source README (Reference)
+
+The following content is the original README from the upstream project
+"NVIDIA Aerial Framework".
+
+The content below is provided for reference only and has not been modified,
+except for formatting or section heading adjustments.
+
+---
 # NVIDIA Aerial™ Framework
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-yellow.svg)](LICENSE)
