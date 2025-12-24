@@ -1,6 +1,6 @@
-# LGCNS-5G-RAN-Platform
+# LGCNS-5G-AI-RAN-Platform
 
-LGCNS-5G-RAN-Platform is a GPU-accelerated 5G RAN platform framework
+LGCNS-5G-AI-RAN-Platform is a GPU-accelerated 5G RAN platform framework
 productized by LG CNS, based on the NVIDIA Aerial Framework.
 
 This project provides a unified platform for building, integrating,
@@ -15,16 +15,16 @@ upper-layer RAN stacks, in virtualized and cloud-native environments.
 - Containerized and cloud-native architecture
 - Optimized for NVIDIA CUDA-enabled GPU platforms
 - Product-grade build, deployment, and operational tooling
-- Designed for PoC, lab, and commercial RAN environments
+- Designed for PoC, lab, and commercial AI-RAN environments
 
 ## Platform Scope
 
-LGCNS-5G-RAN-Platform serves as the **integration and execution framework**
+LGCNS-5G-AI-RAN-Platform serves as the **integration and execution framework**
 for LGCNS RAN components, rather than a protocol implementation itself.
 
 The platform provides:
 
-- Lifecycle management for RAN components
+- Lifecycle management for AI-RAN components
 - Integration framework for GPU-accelerated PHY
 - Interfaces for RAN Stack (MAC/RLC/PDCP/RRC)
 - Runtime orchestration and configuration
@@ -32,8 +32,8 @@ The platform provides:
 
 ## Supported Use Cases
 
-- GPU-based vRAN platform validation
-- 5G RAN PoC and lab environments
+- GPU-based for-RAN pipeline integration
+- 5G AI-RAN PoC and lab environments
 - Private 5G deployments
 - Integration testing of RAN components
 - Research and performance evaluation
